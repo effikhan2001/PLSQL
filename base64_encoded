@@ -1,0 +1,24 @@
+SELECT UTL_RAW.cast_to_varchar2 (
+          UTL_ENCODE.base64_encode (
+             UTL_RAW.cast_to_raw (
+                   TO_SINGLE_BYTE (CHR ('1'))
+                || TO_SINGLE_BYTE (CHR (LENGTH ('SELLER_NAME')))
+                || ('SELLER_NAME')
+                || TO_SINGLE_BYTE (CHR ('2'))
+                || TO_SINGLE_BYTE (CHR (LENGTH ('SELLER_VAT_NUMBER')))
+                || ('SELLER_VAT_NUMBER')
+                || TO_SINGLE_BYTE (CHR ('3'))
+                || TO_SINGLE_BYTE (
+                      CHR (
+                         LENGTH (
+                            TO_CHAR (TO_DATE ('21-NOV-2021'),
+                                     'YYYY-MM-DD"T"HH24:MI:SS'))))
+                || (TO_CHAR (TO_DATE ('21-NOV-2021'),
+                             'YYYY-MM-DD"T"HH24:MI:SS'))
+                || TO_SINGLE_BYTE (CHR ('4'))
+                || TO_SINGLE_BYTE (CHR (LENGTH ('115.00')))
+                || ('115.00')
+                || TO_SINGLE_BYTE (CHR ('5'))
+                || TO_SINGLE_BYTE (CHR (LENGTH ('15.00')))
+                || ('15.00'))))
+  FROM DUAL
